@@ -20,7 +20,7 @@ const TTSComponent = ({ defaultLanguage = "en-IN", initialText = "" }) => {
 
   const player = useAudioPlayer(audioUri);
 
-  const URI = "http://<YOUR_IP_ADDRESS>:3000/api/v1/tts";
+  const URI = "http://<YOUR-IP-ADDRESS>:3000/api/v1/tts";
 
   const fetchTTS = async () => {
     if (!text.trim()) {
