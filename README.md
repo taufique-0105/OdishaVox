@@ -1,22 +1,20 @@
 # OdishaVox
-
 ## Stack
-
 - React-native
 - Expo
 - Expressjs
+- MongoDB
 
 ## Getting started
-
 ### Pre-requisits
-
 - nodejs
 - npm
 - API_KEY, get a subscription key from [SARVAM AI](https://dashbord.sarvam.ai).
+- Create a cluster in mongodb and get the connection String [MongoDB](https://www.mongodb.com/)
 
 ## Install nodejs
 
-### Windows 10/11
+### Windows 10/11 
 
 Download the [Windows Installer](https://nodejs.org/en/download) directly from the [nodejs.org](https://nodejs.org/en/#home-downloadhead) web site.
 
@@ -43,21 +41,20 @@ brew install node
 ```
 git clone https://github.com/taufique-0105/OdishaVox.git
 ```
-
+### 
 ## Starting dev sever
-
 ### Backend
-
-- move to the backend dir
+- Move to the backend dir
 
 ```
 cd backend
 ```
 
-- put your api key in .env file
-
+- Create a .env file in the backend folder
 ```
-echo "API_KEY=<paste your api key here>" > .env
+API_KEY="<YOUR_API_KEY>"
+PORT=3000
+MONGODB_URI=<MONGODB_URL>
 ```
 
 - install dependencies
@@ -66,30 +63,46 @@ echo "API_KEY=<paste your api key here>" > .env
 npm i
 ```
 
-- start dev server
-
+- install nodemon
 ```
-nodemon serer
+npm i -g nodemon
+```
+
+- start dev server
+```
+nodemon server.js
 ```
 
 ### Frontend
-
-- move to the frontend dir
+- Move to the frontend dir
 
 - In TTSPlayer.js add your IP address in line number 23
-
+ 
 ```
 cd frontend
 ```
-
-- install dependencies
+- Install dependencies
 
 ```
 npm i
 ```
 
-- start dev server
+#### Environment Variables
 
+- Open the terminal in the frontend root folder and execute this command.
+- This will create a .env file and add the required environment variables
+- Make sure if you're using physical device to test the app then use you computer IP address in place of localhost in each variables
+- If you're using emulator use localhost
+
+```
+echo "EXPO_PUBLIC_TTS_URL=http://localhost:3000/api/v1/tts
+EXPO_PUBLIC_FEEDBACK_URL=http://localhost:3000/api/v1/feedback/submit
+EXPO_PUBLIC_TTS_URL=http://localhost:3000/api/v1/tts
+EXPO_PUBLIC_STT_URL=http://localhost:3000/api/v1/stt
+EXPO_PUBLIC_STS_URL=http://localhost:3000/api/v1/sts" > .env
+```
+
+- Start dev server
 ```
 npx expo start
 ```
@@ -99,3 +112,18 @@ npx expo start
 - Download Expo Go
 
 - Scan the QR in Expo Go to get started
+
+## App in emulator
+
+- Download [Android Studio](https://developer.android.com/studio)
+- Complete the installation process, make sure to check Virtual device option.
+- In "More Action" select "Virtual Device Manager".
+- In top left corner there is a plus button where you can create virtual device.
+- Select a device with Play Store available on it and click Next.
+- ![image](https://github.com/user-attachments/assets/164b9644-9840-44e3-b39b-73051e926fde)
+- Click on download, play store will be downloaded.
+- Click Finish
+- ![image](https://github.com/user-attachments/assets/b57cbfb2-0de6-41ee-8684-82c737e15f05)
+- You'll get this screen, click on start to launch the Emulater
+- Emulator will launch in few seconds.
+- Click 'a' on terminal where expo frontend is running, this will start the app in the emulator.
